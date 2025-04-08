@@ -30,27 +30,29 @@ def classify(comment: str | ArrayLike) -> dict:
     if (type(comment) == str):
         comment = np.array([comment])
     pred = model.predict(comment)[0]
-    if (len(pred) == 1): # pretty display of single row outputs.
+    if (len(pred) == 1) and __name__ == "__main__": # pretty display of single row outputs.
         return dict(zip(model.classes_, [True if y == 1 else False for y in pred[0]]))
     return pred
 
-if __name__ == "__main__":
+
+if "function that must be ran even when imported":
     if len(sys.argv) == 3:
         model_path = Path(sys.argv[1])
         vec_path = Path(sys.argv[2])
     else:
-        model_path = Path(input("Enter model path:\n"))
-        if model_path is None:
+        model_path = input("Enter model path: ")
+        if not model_path:
             model_path = "./model.onnx"
-        vec_path = Path(input("Enter vectorizer path:\n"))
-        if vec_path is None:
+        vec_path = input("Enter vectorizer path: ")
+        if not vec_path:
             vec_path = "./vectorizer.onnx"
     print("Model path:", model_path)
     print("Vectorizer path:", vec_path)
     print("Loading model...")
     model = Model(model_path, vec_path)
-    print("\nWelcome! ", end="")
 
+if __name__ == "__main__":
+    print("\nWelcome! ", end="")
     if is_interactive():
         print("Call classify(str) to classify text.")
     else:
