@@ -4,7 +4,7 @@ Skills explored: **Random Forests**, **MLPs**, **Feature Selection**, **Confusio
 Frameworks used: **Scikit-learn**, **ONNX**, _NumPy_, _Matplotlib_ <br>
 
 ## How to use this model: <br>
-Download ```model.onnx, vectorizer.onnx, classify.py```. <br>
+Download ```example``` folder, containing: ```model.onnx, vectorizer.onnx, classify.py```. <br>
 Install dependencies: ```pip install onnxruntime numpy``` <br>
 1. run ```python [-i] classify.py``` to enter strings interactively. <br>
 2. ```from classify import classify``` in your scripts, enter path to model & vectorizer, and call ```classify(str | np.array)```. <br>
